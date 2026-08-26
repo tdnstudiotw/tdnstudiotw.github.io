@@ -48,5 +48,29 @@
     node.textContent = `© ${new Date().getFullYear()} TDN Studio`;
   });
 
+  // 動態渲染最近筆記
+  const renderRecentNotes = () => {
+    const container = document.querySelector('[data-recent-notes]');
+    if (!container || !window.BLOG_ARTICLES) return;
+
+    // 依日期排序，取前三篇
+    const recent = [...window.BLOG_ARTICLES]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+
+    container.innerHTML = recent
+      .map(
+        (article) => `
+        <a class="note-row" href="../blog/post.html?id=${article.id}">
+          <span class="note-date">${article.dateLabel}</span>
+          <span class="note-title">${article.title}</span>
+          <span class="note-tag">${article.category.toUpperCase()}</span>
+          <span class="note-arrow">↗</span>
+        </a>`
+      )
+      .join('');
+  };
+
+  renderRecentNotes();
   updateThemeButton();
 })();
