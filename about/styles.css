@@ -29,6 +29,7 @@
 .member-state { color: var(--text-faint); font-family: ui-monospace, monospace; font-size: .53rem; letter-spacing: .09em; }
 .member-avatar { display: grid; width: 88px; height: 88px; margin: 37px 0 25px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; background: var(--surface-tint); color: var(--accent-strong); font-family: ui-monospace, monospace; font-size: .62rem; box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 7%, transparent); }
 .member-two .member-avatar { border-color: var(--text-soft); color: var(--text-soft); box-shadow: 0 0 0 10px color-mix(in srgb, var(--text-soft) 7%, transparent); }
+.member-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .member-card h3 { margin-bottom: 4px; font-size: 1.75rem; letter-spacing: -.05em; }
 .member-role { color: var(--accent-strong); font-family: ui-monospace, monospace; font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; }
 .member-bio { max-width: 430px; margin-top: 17px; color: var(--text-soft); font-size: .8rem; line-height: 1.8; }
