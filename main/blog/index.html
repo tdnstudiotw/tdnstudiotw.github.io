@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffaf5" />
+    <meta name="description" content="技術、地震與氣象、專案紀錄與個人雜記。" />
+    <title>Blog｜TDN Studio</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('site-theme');
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳至主要內容</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index/" aria-label="回到主網站首頁">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy"><strong>TDN Studio</strong><small>notes &amp; projects</small></span>
+        </a>
+        <nav class="desktop-nav" aria-label="主要導覽">
+          <a class="nav-link" href="../index/">首頁</a><a class="nav-link active" href="./">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a>
+        </nav>
+        <div class="header-actions">
+          <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer" aria-label="開啟 GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.3 11.3 0 0 0-3.58 22.02c.57.1.78-.25.78-.55v-2.1c-3.18.7-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.54-2.54-.29-5.2-1.27-5.2-5.66 0-1.25.45-2.27 1.18-3.07-.12-.3-.51-1.46.11-3.03 0 0 .96-.31 3.12 1.17a10.75 10.75 0 0 1 5.68 0c2.16-1.48 3.12-1.17 3.12-1.17.62 1.57.23 2.73.11 3.03.73.8 1.18 1.82 1.18 3.07 0 4.4-2.67 5.37-5.21 5.65.41.36.77 1.07.77 2.16v3.2c0 .3.2.65.79.55A11.3 11.3 0 0 0 12 .7Z" /></svg><span>GitHub</span></a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="切換深色模式" aria-pressed="false"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z" /></svg><span class="sr-only">切換主題</span></button>
+          <button class="mobile-menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="開啟選單"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="行動版導覽"><a class="nav-link" href="../index/">首頁</a><a class="nav-link active" href="./">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a></nav>
+    </header>
+
+    <main id="main-content">
+      <section class="blog-hero">
+        <div class="container blog-hero-inner">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span>THE BLOG / FIELD NOTES</p>
+            <h1>把思考留下來，<br /><em>也讓它們彼此找到。</em></h1>
+            <p class="hero-description">技術、資料、專案與日常觀察。這裡不是答案的資料庫，而是一些問題被好好記下來的地方。</p>
+          </div>
+          <div class="blog-hero-side"><span class="hero-index">BLOG / 001—∞</span><p>四種主題，<br />一個持續更新的空間。</p></div>
+        </div>
+      </section>
+
+      <section class="blog-content section-block">
+        <div class="container">
+          <div class="blog-toolbar">
+            <label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><input type="search" data-search placeholder="搜尋文章、標籤或關鍵字" autocomplete="off" /></label>
+            <div class="category-select-wrap"><label class="sr-only" for="category-select">文章分類</label><select id="category-select" data-category-select></select></div>
+          </div>
+          <div class="tag-filter" data-tag-filter aria-label="標籤篩選"></div>
+
+          <div class="featured-heading"><p class="section-kicker">01 / FEATURED</p><span class="result-count" data-result-count></span></div>
+          <div class="featured-slot" data-featured-slot></div>
+
+          <div class="posts-heading"><div><p class="section-kicker">02 / ALL NOTES</p><h2>所有文章</h2></div><span class="sort-label">NEWEST FIRST</span></div>
+          <div class="post-list" data-post-list></div>
+          <div class="empty-state" data-empty-state hidden><span>—</span><h3>目前沒有符合的文章</h3><p>試試看其他關鍵字或清除分類篩選。</p></div>
+        </div>
+      </section>
+
+      <section class="blog-topics">
+        <div class="container topics-strip">
+          <div><p class="section-kicker">03 / KEEP EXPLORING</p><h2>從一個問題，<br /><em>走到下一個問題。</em></h2></div>
+          <div class="topic-pills"><a href="?category=tech">技術與工具</a><a href="?category=earth-weather">地震／氣象</a><a href="?category=project">專案紀錄</a><a href="?category=notes">個人雜記</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-top"><a class="brand footer-brand" href="../index/"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>TDN Studio</strong><small>notes &amp; projects</small></span></a><div class="footer-links"><a href="./">Blog</a><a href="../projects/">Projects</a><a href="../about/">About</a><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a></div></div><div class="container footer-bottom"><span>© 2026 TDN Studio</span><span>Built with curiosity.</span></div></footer>
+
+    <script src="./articles.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
