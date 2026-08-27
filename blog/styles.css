@@ -203,3 +203,27 @@
   .article-body h2 { margin-top: 46px; }
   .article-pagination { grid-template-columns: 1fr; }
 }
+
+/* External content embeds */
+.external-embed-frame { width: 100%; margin: 28px 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.external-embed-label { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--text-faint); font-family: ui-monospace, monospace; font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
+.external-embed-label span { display: inline-flex; align-items: center; gap: 7px; }
+.external-embed-label i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.external-embed-label a { color: var(--accent-strong); font-size: .53rem; text-decoration: none; text-transform: none; }
+.external-embed-label a:hover { text-decoration: underline; }
+.external-embed-frame blockquote { margin: 0 !important; padding: 20px !important; border: 0 !important; border-radius: 0 !important; background: var(--surface) !important; }
+.external-embed-frame blockquote a { color: var(--accent-strong); }
+.external-embed-placeholder { display: flex; min-height: 92px; align-items: center; justify-content: center; margin: 28px 0; border: 1px dashed var(--line-strong); border-radius: 12px; color: var(--text-faint); font-family: ui-monospace, monospace; font-size: .62rem; letter-spacing: .04em; }
+.external-embed-fallback { display: flex; min-height: 145px; flex-direction: column; justify-content: center; gap: 8px; padding: 26px; color: var(--text); text-decoration: none; }
+.external-embed-fallback span { color: var(--text-faint); font-family: ui-monospace, monospace; font-size: .55rem; letter-spacing: .1em; }
+.external-embed-fallback strong { color: var(--accent-strong); font-size: 1.1rem; }
+.external-embed-fallback small { color: var(--text-soft); font-size: .72rem; line-height: 1.6; }
+.embed-iframe { display: block; width: 100%; border: 0; }
+.embed-youtube, .embed-vimeo { aspect-ratio: 16 / 9; min-height: 320px; }
+.embed-spotify { height: 152px; }
+.embed-soundcloud { height: 166px; }
+.embed-codepen { height: 430px; }
+.embed-gist { min-height: 250px; }
+.embed-reddit { min-height: 500px; }
+.instagram-media, .twitter-tweet, .tiktok-embed { max-width: 100% !important; }
+@media (max-width: 640px) { .external-embed-label { align-items: flex-start; flex-direction: column; gap: 6px; } .embed-youtube, .embed-vimeo { min-height: 205px; } .embed-codepen { height: 350px; } }

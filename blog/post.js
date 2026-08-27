@@ -67,6 +67,13 @@
         else codeLines.push(line);
         return;
       }
+      const embed = window.ExternalEmbeds?.markerPlaceholder(line);
+      if (embed) {
+        flushParagraph();
+        flushList();
+        output.push(embed);
+        return;
+      }
       if (!line.trim()) {
         flushParagraph();
         flushList();
@@ -171,7 +178,10 @@
       const markdown = await response.text();
       const rendered = renderMarkdown(markdown);
       const body = document.querySelector('[data-article-body]');
-      if (body) body.innerHTML = rendered.html;
+      if (body) {
+        body.innerHTML = rendered.html;
+        await window.ExternalEmbeds?.hydrate(body);
+      }
       renderToc(rendered.headings);
     } catch (error) {
       renderError('請使用本地伺服器預覽 Markdown 文章，或確認文章檔案路徑是否正確。');

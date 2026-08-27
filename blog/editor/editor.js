@@ -94,6 +94,13 @@
         return;
       }
       if (codeLines !== null) { codeLines.push(line); return; }
+      const embed = window.ExternalEmbeds?.markerPlaceholder(line);
+      if (embed) {
+        flushParagraph();
+        flushList();
+        output.push(embed);
+        return;
+      }
       if (!line.trim()) { flushParagraph(); flushList(); return; }
       const heading = line.match(/^(#{1,3})\s+(.+)$/);
       if (heading) { flushParagraph(); flushList(); output.push(`<h${heading[1].length}>${inlineMarkdown(heading[2].trim())}</h${heading[1].length}>`); return; }
@@ -113,6 +120,7 @@
     if (!elements.preview || !elements.editor) return;
     const content = elements.editor.value.trim();
     elements.preview.innerHTML = content ? renderMarkdown(content) : '<div class="preview-empty">開始寫作後，預覽會出現在這裡。</div>';
+    if (content) window.ExternalEmbeds?.hydrate(elements.preview);
     const characters = content.replace(/\s/g, '').length;
     const words = content.trim() ? content.trim().split(/\s+/).filter(Boolean).length : 0;
     if (elements.wordCount) elements.wordCount.textContent = `${words || characters} ${words ? 'words' : 'chars'}`;
@@ -161,6 +169,24 @@
   elements.fileInput?.addEventListener('change', async (event) => { const file = event.target.files?.[0]; if (!file) return; loadText(await file.text(), file.name, null); toast(`已讀取 ${file.name}；儲存時會下載新檔案`); event.target.value = ''; });
   document.querySelector('[data-image]')?.addEventListener('click', () => { if (!state.blogImagesHandle) { toast('請先連接 Blog 資料夾，才能寫入圖片。'); return; } elements.imageInput?.click(); });
   elements.imageInput?.addEventListener('change', async (event) => { const files = [...(event.target.files || [])]; if (files.length) await uploadImages(files); event.target.value = ''; });
+
+  const embedPanel = document.querySelector('[data-embed-panel]');
+  const embedProvider = document.querySelector('[data-embed-provider]');
+  const embedURL = document.querySelector('[data-embed-url-input]');
+  const closeEmbedPanel = () => { if (embedPanel) embedPanel.hidden = true; };
+  document.querySelector('[data-embed-toggle]')?.addEventListener('click', () => { if (embedPanel) embedPanel.hidden = !embedPanel.hidden; if (!embedPanel?.hidden) embedURL?.focus(); });
+  document.querySelector('[data-embed-close]')?.addEventListener('click', closeEmbedPanel);
+  document.querySelector('[data-insert-embed]')?.addEventListener('click', () => {
+    const url = embedURL?.value.trim() || '';
+    if (!url) { toast('請貼上公開內容網址。'); embedURL?.focus(); return; }
+    const detected = window.ExternalEmbeds?.detect(url);
+    if (!detected || detected.provider === 'link') { toast('這個網址目前沒有支援的嵌入格式，仍可用外部連結 fallback。'); }
+    const keyword = embedProvider?.value && embedProvider.value !== 'auto' ? embedProvider.value : 'embed';
+    insertAtCursor(`\n{{< ${keyword} ${url} >}}\n`);
+    if (embedURL) embedURL.value = '';
+    if (embedProvider) embedProvider.value = 'auto';
+    closeEmbedPanel();
+  });
 
   const filenameForCurrent = () => state.currentFilename || `${getMeta().id}-${slugify(getMeta().title)}.md`;
   const writeFile = async (handle, content) => { const writable = await handle.createWritable(); await writable.write(content); await writable.close(); };
