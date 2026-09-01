@@ -1,6 +1,6 @@
 (() => {
   // ⚠️ 部署 Cloudflare Worker 後，把網址填到這裡
-  const WORKER_URL = 'https://closure.tdntw.cc.cd';
+  const WORKER_URL = 'https://api.tdntw.cc.cd';
   const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 分鐘自動更新
 
   // ----- 主題與選單（與網站其他頁面一致） -----
