@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#fffaf5" />
-    <meta name="description" content="即時查詢天然災害停止上班及上課情形，資料來源為行政院人事行政總處。" />
-    <title>停班停課｜TDN Studio</title>
+    <meta name="description" content="即時查詢中央氣象署地震報告：顯著有感地震與小區域有感地震，點擊卡片可展開各地震度與測站資料。" />
+    <title>地震報告｜TDN Studio</title>
     <link rel="stylesheet" href="./styles.css" />
     <script>
       (() => {
@@ -24,7 +24,7 @@
           <span class="brand-copy"><strong>TDN Studio</strong><small>disaster &amp; create</small></span>
         </a>
         <nav class="desktop-nav" aria-label="主要導覽">
-          <a class="nav-link" href="../index/">首頁</a><a class="nav-link" href="../blog/">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a><a class="nav-link active" href="./">停班停課</a><a class="nav-link" href="../earthquake/">地震報告</a>
+          <a class="nav-link" href="../index/">首頁</a><a class="nav-link" href="../blog/">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a><a class="nav-link" href="../suspension/">停班停課</a><a class="nav-link active" href="./">地震報告</a>
         </nav>
         <div class="header-actions">
           <a class="github-link" href="https://github.com/tdnstudiotw" target="_blank" rel="noreferrer" aria-label="開啟 GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.3 11.3 0 0 0-3.58 22.02c.57.1.78-.25.78-.55v-2.1c-3.18.7-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.54-2.54-.29-5.2-1.27-5.2-5.66 0-1.25.45-2.27 1.18-3.07-.12-.3-.51-1.46.11-3.03 0 0 .96-.31 3.12 1.17a10.75 10.75 0 0 1 5.68 0c2.16-1.48 3.12-1.17 3.12-1.17.62 1.57.23 2.73.11 3.03.73.8 1.18 1.82 1.18 3.07 0 4.4-2.67 5.37-5.21 5.65.41.36.77 1.07.77 2.16v3.2c0 .3.2.65.79.55A11.3 11.3 0 0 0 12 .7Z" /></svg><span>GitHub</span></a>
@@ -32,40 +32,39 @@
           <button class="mobile-menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="開啟選單"><span></span><span></span><span></span></button>
         </div>
       </div>
-      <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="行動版導覽"><a class="nav-link" href="../index/">首頁</a><a class="nav-link" href="../blog/">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a><a class="nav-link active" href="./">停班停課</a><a class="nav-link" href="../earthquake/">地震報告</a></nav>
+      <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="行動版導覽"><a class="nav-link" href="../index/">首頁</a><a class="nav-link" href="../blog/">Blog</a><a class="nav-link" href="../projects/">Projects</a><a class="nav-link" href="../about/">About</a><a class="nav-link" href="../suspension/">停班停課</a><a class="nav-link active" href="./">地震報告</a></nav>
     </header>
     <main id="main-content">
       <section class="page-hero">
         <div class="container">
-          <p class="section-kicker">LIVE / 停班停課</p>
-          <h1>今天要不要<br /><em>上班上課？</em></h1>
-          <p class="page-description">資料來自行政院人事行政總處，每 5 分鐘自動更新。</p>
+          <p class="section-kicker">LIVE / 地震報告</p>
+          <h1>剛剛<br /><em>哪裡搖了？</em></h1>
+          <p class="page-description">資料來自交通部中央氣象署，每 5 分鐘自動更新。點擊任一筆地震卡片可展開各地震度與測站資料。</p>
         </div>
       </section>
       <section class="status-section">
         <div class="container">
-          <div id="status-banner" class="status-banner is-loading" role="status" aria-live="polite">
+          <div id="eq-banner" class="status-banner is-loading" role="status" aria-live="polite">
             <span class="status-dot" aria-hidden="true"></span>
             <div class="status-copy">
-              <h2 id="status-title">載入中…</h2>
-              <p id="status-sub" class="status-sub">正在向人事行政總處取得最新公告</p>
+              <h2 id="eq-title">載入中…</h2>
+              <p id="eq-sub" class="status-sub">正在向中央氣象署取得最新地震報告</p>
             </div>
-            <button id="refresh-btn" class="refresh-btn" type="button">重新整理</button>
+            <button id="eq-refresh-btn" class="refresh-btn" type="button">重新整理</button>
           </div>
           <div class="status-meta">
-            <span>公告日期 <strong id="meta-date">—</strong></span>
-            <span>官方更新 <strong id="meta-updated">—</strong></span>
-            <span>本站更新 <strong id="meta-fetched">—</strong></span>
+            <span>最新報告 <strong id="eq-issue">—</strong></span>
+            <span>本站更新 <strong id="eq-fetched">—</strong></span>
           </div>
-          <div id="error-panel" class="error-panel" hidden>
+          <div id="eq-error" class="error-panel" hidden>
             <h3>資料暫時無法取得</h3>
-            <p id="error-message" class="error-message"></p>
+            <p id="eq-error-message" class="error-message"></p>
             <div class="error-actions">
-              <button id="retry-btn" class="button button-primary" type="button">再試一次</button>
-              <a class="button button-ghost" href="https://www.dgpa.gov.tw/typh/daily/nds.html" target="_blank" rel="noreferrer">前往人事行政總處 ↗</a>
+              <button id="eq-retry-btn" class="button button-primary" type="button">再試一次</button>
+              <a class="button button-ghost" href="https://scweb.cwa.gov.tw/zh-tw/earthquake" target="_blank" rel="noreferrer">前往中央氣象署 ↗</a>
             </div>
           </div>
-          <div id="city-list" class="city-list" hidden></div>
+          <div id="eq-list" class="eq-list" aria-live="polite"></div>
         </div>
       </section>
     </main>
@@ -74,7 +73,7 @@
         <a class="brand footer-brand" href="../index/"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>TDN Studio</strong><small>disaster &amp; create</small></span></a>
         <div class="footer-links"><a href="../blog/">Blog</a><a href="../projects/">Projects</a><a href="../about/">About</a><a href="https://github.com/tdnstudiotw" target="_blank" rel="noreferrer">GitHub ↗</a></div>
       </div>
-      <div class="container footer-bottom"><span>© <span data-year>2026</span> TDN Studio</span><span>資料來源：行政院人事行政總處</span></div>
+      <div class="container footer-bottom"><span>© <span data-year>2026</span> TDN Studio</span><span>資料來源：交通部中央氣象署</span></div>
     </footer>
     <script src="./script.js"></script>
   </body>
