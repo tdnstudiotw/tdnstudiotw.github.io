@@ -231,9 +231,14 @@
     cells.push('<td class="eq-st-int"><span class="eq-chip" ' + chipStyle(st.intensity) + '>' + esc(st.intensity || '—') + '</span></td>');
     cells.push('<td class="eq-st-dist">' + esc(fmtDist(st.dist)) + '</td>');
     if (hasWaveCol) {
-      cells.push('<td class="eq-st-wave">' + (st.wave ? '<span class="eq-wave">波形</span>' : '<span class="eq-wave is-none">—</span>') + '</td>');
+      cells.push('<td class="eq-st-wave">' + waveCellHtml(st) + '</td>');
     }
     return '<tr>' + cells.join('') + '</tr>';
+  };
+
+  const waveCellHtml = (st) => {
+    if (!st.waveUrl) return '<span class="eq-wave is-none">—</span>';
+    return '<a class="eq-wave" href="' + esc(st.waveUrl) + '" target="_blank" rel="noreferrer" referrerpolicy="no-referrer">波形 ↗</a>';
   };
 
   const tableHtml = (e, q) => {
@@ -276,7 +281,7 @@
       html += '<ul class="eq-group-list">';
       for (const st of sts) {
         html += '<li><span class="eq-g-name">' + esc(st.name || '—') + '</span><span class="eq-g-chip"><span class="eq-chip" ' + chipStyle(st.intensity) + '>' + esc(st.intensity || '—') + '</span></span><span class="eq-g-dist">' + esc(fmtDist(st.dist)) + '</span>';
-        if (hasWaveCol && st.wave) html += '<span class="eq-g-wave">波形</span>';
+        if (hasWaveCol && st.waveUrl) html += '<a class="eq-g-wave" href="' + esc(st.waveUrl) + '" target="_blank" rel="noreferrer" referrerpolicy="no-referrer">波形 ↗</a>';
         html += '</li>';
       }
       html += '</ul></section>';
