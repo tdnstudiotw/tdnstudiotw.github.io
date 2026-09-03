@@ -101,7 +101,7 @@
   const fmtDepth = (v) => (v == null ? '—' : v + ' 公里');
   const fmtDist = (v) => (v == null ? '—' : Number(v).toFixed(1) + ' 公里');
 
-  const keyOf = (e) => e.type + ':' + (e.id || e.originTime || 'x');
+  const keyOf = (e) => e.type + ':' + (e.originTime || 'x');
 
   // 震度文字轉排序數值（5弱=51、5強=52 …）
   const intKey = (text) => {
