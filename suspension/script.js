@@ -115,7 +115,8 @@
             ${city.items
               .map((item) => {
                 const { place, status } = splitItem(item);
-                return `<li class="item ${classify(status)}"><span class="item-place">${escapeHtml(place)}</span><span class="item-status">${escapeHtml(status)}</span></li>`;
+                const placeMarkup = place ? `<span class="item-place">${escapeHtml(place)}</span>` : '';
+                return `<li class="item ${classify(status)}">${placeMarkup}<span class="item-status">${escapeHtml(status)}</span></li>`;
               })
               .join('')}
           </ul>

@@ -123,14 +123,14 @@ h1 em, h2 em { color: var(--accent-strong); font-style: normal; }
 .status-meta strong { color: var(--text); font-weight: 700; }
 
 /* ----- City cards ----- */
-.city-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+.city-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; align-items: start; }
 .city-card { padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-soft); transition: border-color 180ms ease, transform 180ms ease; }
 .city-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 .city-name { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 1.12rem; font-weight: 750; }
 .city-items { display: grid; gap: 9px; }
-.item { display: flex; gap: 10px; align-items: baseline; padding: 9px 12px; border-radius: var(--radius-sm); background: var(--surface-soft); font-size: .84rem; line-height: 1.55; }
-.item .item-place { flex: none; font-weight: 700; }
-.item .item-status { color: var(--text-soft); }
+.item { display: grid; gap: 2px; padding: 10px 14px; border-radius: var(--radius-sm); background: var(--surface-soft); font-size: .86rem; line-height: 1.6; }
+.item .item-place { font-weight: 700; overflow-wrap: anywhere; }
+.item .item-status { color: var(--text-soft); overflow-wrap: anywhere; }
 .item.stop { background: var(--warn-soft); }
 .item.stop .item-place, .item.stop .item-status { color: var(--warn); }
 .item.normal { background: var(--ok-soft); }
@@ -176,6 +176,8 @@ h1 em, h2 em { color: var(--accent-strong); font-style: normal; }
   .status-copy { flex-basis: calc(100% - 40px); }
   .status-meta { gap: 10px 24px; margin: 20px 0 30px; }
   .city-list { grid-template-columns: 1fr; gap: 16px; }
+  .city-card { padding: 20px 18px; }
+  .item { font-size: .9rem; }
   .footer-top, .footer-bottom { align-items: start; flex-direction: column; }
   .footer-bottom { margin-top: 36px; gap: 7px; }
 }
