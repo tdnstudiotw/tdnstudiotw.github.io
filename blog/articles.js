@@ -3,7 +3,7 @@ window.BLOG_ARTICLES = [
     "id": "0001",
     "slug": "別再搞混了-增強安全提示是什麼",
     "title": "別再搞混了~~~增強安全提示是什麼？",
-    "excerpt": "網路上有部分民眾將民間APP「台灣地震速報」與 iPhone「增強安全提示」混淆",
+    "excerpt": "同樣是手機響起來，國家級警報、民間 App 和 iPhone 的「增強安全提示」其實不是同一件事。",
     "date": "2026-08-25",
     "dateLabel": "2026.08.25",
     "category": "地震／氣象",
@@ -14,7 +14,7 @@ window.BLOG_ARTICLES = [
       "Apple",
       "中央氣象署"
     ],
-    "readingTime": "1 min read",
+    "readingTime": "4 min read",
     "file": "./posts/0001-eew-sound-different.md",
     "accent": "orange",
     "featured": true

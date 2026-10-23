@@ -10,7 +10,7 @@ body { min-height: 100vh; background: var(--bg); }
 .back-to-blog:hover { text-decoration: underline; }
 .brand-divider { width: 1px; height: 27px; background: var(--line-strong); }
 .local-badge { display: inline-flex; align-items: center; gap: 7px; color: var(--text-faint); font-family: ui-monospace, monospace; font-size: .58rem; letter-spacing: .1em; }
-.local-badge i, .preview-dot i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #8fb86d; box-shadow: 0 0 0 4px color-mix(in srgb, #8fb86d 15%, transparent); }
+.local-badge i, .preview-dot i { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
 .editor-header .theme-toggle { display: inline-grid; }
 .editor-shell { display: grid; min-height: calc(100vh - 72px); grid-template-columns: 285px minmax(0, 1fr); }
 .editor-sidebar { display: flex; flex-direction: column; padding: 23px 17px 17px; border-right: 1px solid var(--line); background: var(--surface-soft); }

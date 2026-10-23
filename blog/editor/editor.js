@@ -266,7 +266,7 @@
   elements.fileList?.addEventListener('click', async (event) => { const button = event.target.closest('[data-filename]'); if (!button || !state.postsHandle) return; const item = state.files.find((file) => file.name === button.dataset.filename); if (item) { await readHandle(item.handle); renderFileList(); } });
 
   elements.themeToggle?.addEventListener('click', () => { const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark'; root.dataset.theme = nextTheme; localStorage.setItem('site-theme', nextTheme); updateThemeButton(); });
-  const updateThemeButton = () => { const isDark = root.dataset.theme === 'dark'; elements.themeToggle?.setAttribute('aria-pressed', String(isDark)); elements.themeToggle?.setAttribute('aria-label', isDark ? '切換淺色模式' : '切換深色模式'); elements.themeColor?.setAttribute('content', isDark ? '#111111' : '#fffaf5'); };
+  const updateThemeButton = () => { const isDark = root.dataset.theme === 'dark'; elements.themeToggle?.setAttribute('aria-pressed', String(isDark)); elements.themeToggle?.setAttribute('aria-label', isDark ? '切換淺色模式' : '切換深色模式'); elements.themeColor?.setAttribute('content', isDark ? '#101314' : '#faf9f7'); };
 
   setMeta({ id: '0004', date: today(), category: '專案紀錄', tags: [], summary: '' });
   updatePreview();

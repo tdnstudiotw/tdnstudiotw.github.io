@@ -13,7 +13,7 @@
     const isDark = root.dataset.theme === 'dark';
     themeToggle?.setAttribute('aria-pressed', String(isDark));
     themeToggle?.setAttribute('aria-label', isDark ? '切換淺色模式' : '切換深色模式');
-    themeColor?.setAttribute('content', isDark ? '#111111' : '#fffaf5');
+    themeColor?.setAttribute('content', isDark ? '#101314' : '#faf9f7');
   };
 
   themeToggle?.addEventListener('click', () => {
