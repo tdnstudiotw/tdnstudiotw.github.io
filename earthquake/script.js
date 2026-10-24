@@ -1,6 +1,5 @@
 (() => {
-  // ⚠️ 部署地震報告 Cloudflare Worker 後，把網址填到這裡（不含路徑）
-  const WORKER_URL = 'https://report.tdntech.de5.net';
+  const WORKER_URL = 'https://api.tdntech.de5.net/api/report';
   const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 分鐘自動更新
   const DATA_SOURCE = '交通部中央氣象署';
 
